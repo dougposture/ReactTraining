@@ -37,5 +37,4 @@ export const CarTool = (props: CarToolProps) => {
             </tbody>
         </table>
         </>
-
 };
