@@ -1,30 +1,17 @@
 import React from 'react';
 
-const cars = [
-    {
-        id: 0, 
-        make: 'Dodge', 
-        model: 'Stratus', 
-        year: 2004, 
-        color: 'Silver', 
-        price: 7500
-    },
-    {
-        id: 1,
-        make: 'Scion',
-        model: 'xB',
-        year: 2010, 
-        color: 'Silver', 
-        price: 12500
-    }
-    ];
+import { Car } from '../models/Car';
 
-export const CarTool = () => {
+interface CarToolProps {
+    cars: Car[];
+}
+
+export const CarTool = (props: CarToolProps) => {
     return <>
         <header>
             <h1>Car Tool</h1>
         </header>
-        
+
         <table>
             <thead>
                 <tr>
@@ -37,16 +24,16 @@ export const CarTool = () => {
                 </tr>
             </thead>
             <tbody>
-                {cars.map(car => (
-                <tr key={car.id}>
-                    <td>{car.id}</td>
-                    <td> {car.make}</td>
-                    <td> {car.model}</td>
-                    <td> {car.year}</td>
-                    <td> {car.color}</td>
-                    <td> {car.price}</td>
+                {props.cars.map(Car => 
+                <tr key={Car.id}>
+                    <td>{Car.id}</td>
+                    <td> {Car.make}</td>
+                    <td> {Car.model}</td>
+                    <td> {Car.year}</td>
+                    <td> {Car.color}</td>
+                    <td> {Car.price}</td>
                 </tr>
-            ))}
+            )}
             </tbody>
         </table>
         </>
