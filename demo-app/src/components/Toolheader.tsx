@@ -4,7 +4,11 @@ interface ToolHeaderProps {
     headerText: string,
 }
 
-export const ToolHeader = ({ headerText }: ToolHeaderProps ) =>
-    <header>
+export const ToolHeader = React.memo(({ headerText }: ToolHeaderProps ) => {
+    
+    console.log('rendered tool header')
+
+    return <header>
         <h1>{headerText}</h1>
     </header>;
+});
