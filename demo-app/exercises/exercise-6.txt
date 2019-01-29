@@ -1,0 +1,16 @@
+Exercise 6
+
+1. Utilize the ToolHeader component in Cartool.
+
+2. Create a new component named CarTable. Move the table of cars from CarTool to CarTable.
+
+3. Utilize the CarTable in CarTool.
+
+4. Create a new component named CarViewRow. Move the table row for a car object to the CarViewRow component.
+
+5. Utilize CarViewRow component in CarTable component.
+
+Bonus: 
+    Add a new column to the CarTable named Acrionas. Add button to the new last column of CarViewRow. 
+    Label the button with the word "Delete". 
+    When the button is clicked, the row for the car should be removed from the table.
