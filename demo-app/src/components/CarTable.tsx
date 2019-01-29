@@ -7,7 +7,7 @@ interface CarTableProps {
     deleteCarHandler: (carId: number) => void,
 }
 
-export const CarTable = (props :CarTableProps) =>
+export const CarTable = ({cars,deleteCarHandler}: CarTableProps) =>
 
     <table>
         <thead>
@@ -21,8 +21,14 @@ export const CarTable = (props :CarTableProps) =>
             </tr>
         </thead>
         <tbody>
-            {props.cars.map(car =>
-                <CarViewRow key = {car.id} car={car}/>
-                )}
+            {cars.map
+                (car => 
+                    <CarViewRow 
+                        key = {car.id}
+                        car = {car}
+                        deleteCarHandler = {deleteCarHandler} 
+                    />
+                )   
+            }
         </tbody>
     </table>
