@@ -1,13 +1,16 @@
 import React from 'react';
+
 import { Car } from '../models/Car';
 import { CarViewRow } from './CarViewRow';
+import { CarEditRow } from './CarEditRow';
 
 interface CarTableProps {
-    cars: Car[];
-    deleteCarHandler: (carId: number) => void,
+    cars: Car[],
+    onDeleteCar: (carId: number) => void,
+    onEditCar: (carId: number) => void,
 }
 
-export const CarTable = ({cars,deleteCarHandler}: CarTableProps) =>
+export const CarTable = ({cars,onDeleteCar, onEditCar}: CarTableProps) =>
 
     <table>
         <thead>
@@ -18,6 +21,7 @@ export const CarTable = ({cars,deleteCarHandler}: CarTableProps) =>
                 <th>Year</th>
                 <th>Color</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +30,8 @@ export const CarTable = ({cars,deleteCarHandler}: CarTableProps) =>
                     <CarViewRow 
                         key = {car.id}
                         car = {car}
-                        deleteCarHandler = {deleteCarHandler} 
+                        onDeleteCar = {onDeleteCar} 
+                        onEditCar = {onEditCar}
                     />
                 )   
             }

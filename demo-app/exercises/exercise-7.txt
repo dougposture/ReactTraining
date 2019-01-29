@@ -1,0 +1,5 @@
+Exercise 7
+
+1. Move CarForm to it's own component. Utilize CarForm in CarTool.
+
+2. Ensure the application works.

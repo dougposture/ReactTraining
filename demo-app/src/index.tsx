@@ -30,8 +30,7 @@ const carList = [
 
 ReactDOM.render(
     <>
-
-    <HelloWorld />
+    
     <CarTool cars={carList}/>
     <ColorTool colors={colorList}/>
     
