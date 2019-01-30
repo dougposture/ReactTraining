@@ -1,0 +1,9 @@
+Exercise 9
+
+1. Use state hooks to manage the editCarId and cars in CarTool.
+
+2. Use a ref to set the focus on the 2nd input field of the EditCarRow component when the edit button is clicked.
+
+3. (Bonus) Use a ref to set focus on the car form make field after exiting EditCarRow component.
+
+4. Ensure it works.

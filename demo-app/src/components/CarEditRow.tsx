@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Car } from "../models/Car";
-import { CarForm } from "./CarForm";
 
 interface CarEditRowProps {
   onSaveCar: (car: Car) => void;

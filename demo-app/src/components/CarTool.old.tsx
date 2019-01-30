@@ -7,34 +7,30 @@ import { CarForm } from "./CarForm";
 
 interface CarToolProps {
   cars: Car[];
-}
-
-interface CarToolState {
-  cars: Car[];
   editCarId: number;
 }
 
-export class CarTool extends React.Component<CarToolProps, CarToolState> {
-  state = {
-    cars: this.props.cars.concat(),
-    editCarId: 0
-  };
+export const CarTool = ({ cars, editCarId}: CarToolProps) => {
+  const [car, carId] = useState('');
 
+  const editCar = () =>{
+    carId(car);
+  }
   addCar = (newCar: Car) => {
     const car = {
       ...newCar,
-      id: Math.max(...this.state.cars.map(car => car.id as number), 0) + 1
+      id: Math.max(...cars.map(car => car.id as number), 0) + 1
     };
 
     this.setState({
-      cars: this.state.cars.concat(car),
+      cars: cars.concat(car),
       editCarId: -1
     });
   };
 
   deleteCar = (carId: number) => {
     this.setState({
-      cars: this.state.cars.filter(car => car.id !== carId),
+      cars: cars.filter(car => car.id !== carId),
       editCarId: -1
     });
   };
@@ -50,7 +46,7 @@ export class CarTool extends React.Component<CarToolProps, CarToolState> {
   };
 
   saveCar = (car: Car) => {
-    const newCars = this.state.cars.slice();
+    const newCars = cars.slice();
     const carIndex = newCars.findIndex(c => c.id === car.id);
     newCars[carIndex] = car;
     this.setState({

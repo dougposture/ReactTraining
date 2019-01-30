@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface ColorFormProps {
     onSubmitColor: (color: string) => void;
@@ -6,58 +6,28 @@ interface ColorFormProps {
 
 }
 
-interface ColorFormState {
-    color: string;
-    [x: string]: any;
-}
-export class ColorForm extends React.Component <ColorFormProps, ColorFormState> {
+export const ColorForm = ({ onSubmitColor, buttonText}: ColorFormProps) => {
+    
+    const [color, setColor] = useState('');
 
-    static defaultProps = {
-        buttonText: "Submit Color"
-    };
+    const colorInput = useRef<HTMLInputElement>(null); //React.createRef<HTMLInputElement>();
 
-    state = {
-        color: ''
-    };
-    /* Code above runs:
-    constructor(props: ColorToolProps){
-        super(props);
-
-        this.state ={
-            color:'',
-        };
-    } 
-    */
-
-   change = ({ target: { name, value, type } }: React.ChangeEvent<HTMLInputElement>) => {
-    // class arrow function. Using event handling, ALWAYS use arrow function. 
-    // not valid JS but used for proper binding of "this" for event handlers.
-        this.setState({
-            [ name ]: type === 'number' ? Number(value) : value,
-        }, 
-        () => {
-            console.log(this.state);
+    useEffect(() => {
+        if (colorInput.current) {
+            colorInput.current.focus();
         }
-        );
+    });
+    const submitColor = () => {
+        onSubmitColor(color);
+        setColor('');
     };
 
-    submitColor = () => {
-        this.props.onSubmitColor(this.state.color);
-
-        this.setState({
-            color: '',
-        });
-    };
-
-    render(){
-        return( <form>
+        return <form>
                 <div>
                     <label htmlFor="color-input">New Color</label>
-                    <input type="type" id="color-input" name="color" 
-                        value={this.state.color} onChange={this.change} />
+                    <input type="type" id="color-input" name="color" ref={colorInput}
+                        value={color} onChange={e=> setColor(e.target.value)} />
                 </div>
-                <button type="button" onClick={this.submitColor}>{this.props.buttonText}</button>
+                <button type="button" onClick={submitColor}>{buttonText}</button>
         </form>
-        )
-    };
 }
